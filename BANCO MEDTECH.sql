@@ -46,7 +46,7 @@ GO
 
 CREATE TABLE SCHEDULE (
 	idSchedule INT IDENTITY(1, 1) PRIMARY KEY,
-	idDoctor INT NOT NULL,
+	idDoctor INT FOREIGN KEY REFERENCES DOCTOR(idDoctor) NOT NULL,
 	weekDay VARCHAR(20) NOT NULL CHECK (weekDay IN ('Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado', 'Domingo')),
 	startTime TIME NOT NULL,
 	endTime TIME NOT NULL,
@@ -65,8 +65,8 @@ GO
 
 CREATE TABLE APPOINTMENT (
 	idAppointment INT IDENTITY(1, 1) PRIMARY KEY,
-	idSchedule INT NOT NULL,
-	idPatient INT NOT NULL,
+	idSchedule INT FOREIGN KEY REFERENCES SCHEDULE(idSchedule) NOT NULL,
+	idPatient INT FOREIGN KEY REFERENCES PATIENT(idPatient) NOT NULL,
 	appointmentDate DATE NOT NULL,
 	createdAt DATETIME DEFAULT(GETDATE()),
 	updatedAt DATETIME

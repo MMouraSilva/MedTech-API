@@ -12,7 +12,7 @@ class AppointmentController {
     }
 
     HandleCreateRequest = async (req, res) => {
-        const { hasSucceed } = await this.#appointmentModel.CreateSchedule(req.body);
+        const { hasSucceed } = await this.#appointmentModel.CreateAppointment(req.body);
         hasSucceed ? this.#statusCode.ResponseCreated(res) : this.#statusCode.ResponseServerError(res);
     }
 }
