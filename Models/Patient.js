@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const Database = require("./Database");
 const ErrorHandler = require("./ErrorHandler");
-const PatientORM = require("../db_table_models/PatientModel");
+const PatientORM = require("../db_tables_ORM/PatientORM");
 require("dotenv").config();
 
 class Patient {

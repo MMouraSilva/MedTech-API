@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const cors = require("cors");
 
 const patientRoutes = require("./Routes/patient");
+const doctorRoutes = require("./Routes/doctor");
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -22,6 +23,8 @@ connection
 app.use(cors());
 
 app.use("/", patientRoutes);
+
+app.use("/", doctorRoutes);
 
 http.listen(9500, () => {
     console.log('App rodando!');

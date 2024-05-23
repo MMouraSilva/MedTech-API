@@ -16,6 +16,6 @@ router.post("/patient", controller.HandleCreateRequest);
 
 // router.delete("/patient/:id", Usuario.deleteUsuario);
 
-router.post("/authenticate", controller.HandleAuthenticateRequest);
+router.post("/patient/authenticate", controller.HandleAuthenticateRequest);
 
 module.exports = router;
