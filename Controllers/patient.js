@@ -17,8 +17,11 @@ class PatientController {
     }
 
     HandleAuthenticateRequest = async (req, res) => {
-        const { isCredentialsValid, error } = await this.#patientModel.AuthenticatePatient(req.body);
-        error ? this.#statusCode.ResponseServerError(res) : isCredentialsValid ? this.#statusCode.ResponseOk(res) : this.#statusCode.ResponseUnauthorized(res);
+        const { isCredentialsValid, error, patient } = await this.#patientModel.AuthenticatePatient(req.body);
+        const patientJson = JSON.parse(JSON.stringify(patient));
+        res.statusCode = 200;
+        
+        return error ? this.#statusCode.ResponseServerError(res) : isCredentialsValid ? res.json(patientJson) : this.#statusCode.ResponseUnauthorized(res);
     }
 }
 

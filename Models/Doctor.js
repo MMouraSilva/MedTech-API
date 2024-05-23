@@ -35,7 +35,7 @@ class Doctor {
         const { queryResult, error } = await this.GetDoctorByEmail(whereClause);
         const isCredentialsValid = error ? false : queryResult.length ? await bcrypt.compare(data.password, queryResult[0].dataValues.password) : false;
 
-        return { isCredentialsValid, error };
+        return { isCredentialsValid, error, doctor: queryResult[0].dataValues };
     }
 
     async #HandleDoctorDataToCreate(data) {
